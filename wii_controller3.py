@@ -81,17 +81,18 @@ try:
     GPIO.output(PIN_LED, 0)
 
 except RuntimeError:
-    print "Error opening wiimote connection"
+    print("Error opening wiimote connection")
     GPIO.output(PIN_LED, 0)
     # Uncomment this line to shutdown the Pi if pairing fails
     #os.system("sudo halt")
     quit()
 
-print 'Wii Remote connected...\n'
-print 'Press some buttons!\n'
-print 'Press PLUS and MINUS together to disconnect and quit.\n'
+print('Wii Remote connected...')
+print('Press some buttons!')
+print('Press PLUS and MINUS together to disconnect and quit.')
 
 for x in range(0,3):
+    print("laikam gaida uz LED PIN)
     GPIO.output(PIN_LED, 1)
     time.sleep(0.25)
     GPIO.output(PIN_LED, 0)
@@ -106,7 +107,7 @@ while True:
     # If Plus and Minus buttons pressed
     # together then rumble and quit.
     if (buttons - cwiid.BTN_PLUS - cwiid.BTN_MINUS == 0):  
-        print '\nClosing connection ...'
+        print('\nClosing connection ...')
         wii.rumble = 1
         GPIO.output(PIN_LED, 1)
         time.sleep(1)
@@ -119,7 +120,7 @@ while True:
     # doing a bitwise AND of the buttons number
     # and the predefined constant for that button.
     if (buttons & cwiid.BTN_LEFT):
-        print 'Left pressed'
+        print('Left pressed')
         Left()
         time.sleep(button_delay)         
 
